@@ -8,19 +8,11 @@
 </route>
 
 <script lang="ts" setup>
-// 识别二维码
-    uni.scanCode({
-        success: function(res) {
-
-        }
-    })
-    uni.chooseImage({
-        count: 1,
-        sourceType: ['camera'],
-        success: function (res) {
-            const tempFilePath = res.tempFilePaths[0];
-        },
-    })
+  // 测试 uni API 自动引入
+  onLoad(() => {
+  })
+  onMounted(()=>{ 
+  })
 </script>
 
 <template>

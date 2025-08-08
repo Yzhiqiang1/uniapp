@@ -9,13 +9,17 @@
 </route>
 
 <script lang="ts" setup>
-const data = ref(null);
-const error = ref(null);
 
+
+// 使用 uni-app 的导航API
+function navigateTo(url: string) {
+  uni.navigateTo({ url });
+}
 </script>
 
 <template>
   <view class="home-container">
+    <view class="navbar"></view>
     <!-- 设备概括 -->
     <view class="section">
       <text class="section-title">设备概括</text>
@@ -35,32 +39,32 @@ const error = ref(null);
     <view class="section">
       <text class="section-title">电力测试</text>
       <view class="section-content">
-        <view class="item">
-          <image src="/static/icons/daily-data.png" class="icon"></image>
+        <view class="item" @click="navigateTo('/pages/login/login')">
+          <image src="/static/svgs/ElectricPowerDaily.svg" class="icon"></image>
           <text class="item-text">日原数据</text>
         </view>
         <view class="item">
-          <image src="/static/icons/daily-extreme-value.png" class="icon"></image>
+          <image src="/static/svgs/DailyExtremes.svg" class="icon"></image>
           <text class="item-text">逐日极值</text>
         </view>
         <view class="item">
-          <image src="/static/icons/electricity-report.png" class="icon"></image>
+          <image src="/static/svgs/ElectricityChart.svg" class="icon"></image>
           <text class="item-text">电力报表</text>
         </view>
         <view class="item">
-          <image src="/static/icons/extreme-value-report.png" class="icon"></image>
+          <image src="/static/svgs/ExtremeValueReport.svg" class="icon"></image>
           <text class="item-text">极值报表</text>
         </view>
         <view class="item">
-          <image src="/static/icons/power-factor.png" class="icon"></image>
+          <image src="/static/svgs/PowerFactor.svg" class="icon"></image>
           <text class="item-text">功率因素</text>
         </view>
         <view class="item">
-          <image src="/static/icons/electricity-daily-report.png" class="icon"></image>
+          <image src="/static/svgs/ElectricPowerDaily.svg" class="icon"></image>
           <text class="item-text">电力日报</text>
         </view>
         <view class="item">
-          <image src="/static/icons/harmonic-monitoring.png" class="icon"></image>
+          <image src="/static/svgs/ElectricPowerDaily.svg" class="icon"></image>
           <text class="item-text">谐波监测</text>
         </view>
       </view>
@@ -71,31 +75,31 @@ const error = ref(null);
       <text class="section-title">用电分析</text>
       <view class="section-content">
         <view class="item">
-          <image src="/static/icons/energy-report.png" class="icon"></image>
+          <image src="/static/svgs/EnergyChart.svg" class="icon"></image>
           <text class="item-text">用能报表</text>
         </view>
         <view class="item">
-          <image src="/static/icons/same-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/YearOnYearAnalysis.svg" class="icon"></image>
           <text class="item-text">同比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/ring-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/Qoq.svg" class="icon"></image>
           <text class="item-text">环比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/loss-analysis.png" class="icon"></image>
+          <image src="/static/svgs/LossAnalysis.svg" class="icon"></image>
           <text class="item-text">损耗分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/energy-collection.png" class="icon"></image>
+          <image src="/static/svgs/ElectricEnergyCollection.svg" class="icon"></image>
           <text class="item-text">电能集抄</text>
         </view>
         <view class="item">
-          <image src="/static/icons/peak-valley-flat.png" class="icon"></image>
+          <image src="/static/svgs/SharpPeaksAndValleys.svg" class="icon"></image>
           <text class="item-text">尖峰平谷</text>
         </view>
         <view class="item">
-          <image src="/static/icons/max-demand.png" class="icon"></image>
+          <image src="/static/svgs/MaxDemand.svg" class="icon"></image>
           <text class="item-text">最大需量</text>
         </view>
       </view>
@@ -106,23 +110,23 @@ const error = ref(null);
       <text class="section-title">用水分析</text>
       <view class="section-content">
         <view class="item">
-          <image src="/static/icons/water-energy-report.png" class="icon"></image>
+          <image src="/static/svgs/EnergyChart.svg" class="icon"></image>
           <text class="item-text">用能报表</text>
         </view>
         <view class="item">
-          <image src="/static/icons/water-same-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/YearOnYearAnalysis.svg" class="icon"></image>
           <text class="item-text">同比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/water-ring-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/Qoq.svg" class="icon"></image>
           <text class="item-text">环比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/water-loss-analysis.png" class="icon"></image>
+          <image src="/static/svgs/LossAnalysis.svg" class="icon"></image>
           <text class="item-text">损耗分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/water-energy-collection.png" class="icon"></image>
+          <image src="/static/svgs/ElectricEnergyCollection.svg" class="icon"></image>
           <text class="item-text">水能集抄</text>
         </view>
       </view>
@@ -133,23 +137,23 @@ const error = ref(null);
       <text class="section-title">用气分析</text>
       <view class="section-content">
         <view class="item">
-          <image src="/static/icons/gas-energy-report.png" class="icon"></image>
+          <image src="/static/svgs/EnergyChart.svg" class="icon"></image>
           <text class="item-text">用能报表</text>
         </view>
         <view class="item">
-          <image src="/static/icons/gas-same-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/YearOnYearAnalysis.svg" class="icon"></image>
           <text class="item-text">同比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/gas-ring-period-analysis.png" class="icon"></image>
+          <image src="/static/svgs/Qoq.svg" class="icon"></image>
           <text class="item-text">环比分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/gas-loss-analysis.png" class="icon"></image>
+          <image src="/static/svgs/LossAnalysis.svg" class="icon"></image>
           <text class="item-text">损耗分析</text>
         </view>
         <view class="item">
-          <image src="/static/icons/gas-energy-collection.png" class="icon"></image>
+          <image src="/static/svgs/ElectricEnergyCollection.svg" class="icon"></image>
           <text class="item-text">气能集抄</text>
         </view>
       </view>
@@ -160,19 +164,19 @@ const error = ref(null);
       <text class="section-title">安全用电</text>
       <view class="section-content">
         <view class="item">
-          <image src="/static/icons/leakage-temperature-monitoring.png" class="icon"></image>
+          <image src="/static/svgs/Ltd.svg" class="icon"></image>
           <text class="item-text">漏电/温度监测</text>
         </view>
         <view class="item">
-          <image src="/static/icons/switch-control.png" class="icon"></image>
+          <image src="/static/svgs/Switch.svg" class="icon"></image>
           <text class="item-text">开关控制</text>
         </view>
         <view class="item">
-          <image src="/static/icons/switch-monitoring.png" class="icon"></image>
+          <image src="/static/svgs/SwitchMonitoring.svg" class="icon"></image>
           <text class="item-text">开关监测</text>
         </view>
         <view class="item">
-          <image src="/static/icons/camera.png" class="icon"></image>
+          <image src="/static/svgs/Camera.svg" class="icon"></image>
           <text class="item-text">摄像头</text>
         </view>
       </view>
@@ -181,15 +185,15 @@ const error = ref(null);
     <!-- 底部导航栏 -->
     <view class="bottom-navigation">
       <view class="nav-item active">
-        <image src="/static/icons/home-active.png" class="nav-icon"></image>
+        <image src="/static/svg/home-active.svg" class="nav-icon"></image>
         <text class="nav-text">首页</text>
       </view>
       <view class="nav-item">
-        <image src="/static/icons/cloud-group-status.png" class="nav-icon"></image>
+        <image src="/static/svg/cloud-group-status.svg" class="nav-icon"></image>
         <text class="nav-text">云组态</text>
       </view>
       <view class="nav-item">
-        <image src="/static/icons/my-profile.png" class="nav-icon"></image>
+        <image src="/static/svg/my-profile.svg" class="nav-icon"></image>
         <text class="nav-text">我的</text>
       </view>
     </view>
@@ -198,18 +202,28 @@ const error = ref(null);
 
 <style lang="scss" scoped>
 .home-container {
-  padding: 20px;
-
-  .section {
-    margin-bottom: 20px;
+  position: relative;
+  padding: 20rpx;
+  padding-top: 100rpx;
+  background-color: #F2F2F2;
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 84rpx;
     background-color: #fff;
-    border-radius: 8px;
-    padding: 16px;
+  }
+  .section {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    border-radius: 8rpx;
+    padding: 16rpx;
 
     .section-title {
-      font-size: 16px;
+      font-size: 16rpx;
       font-weight: bold;
-      margin-bottom: 16px;
+      margin-bottom: 16rpx;
     }
 
     .section-content {
@@ -222,16 +236,16 @@ const error = ref(null);
         align-items: center;
         width: 25%;
         text-align: center;
-        margin-bottom: 16px;
+        margin-bottom: 16rpx;
 
         .icon {
-          width: 48px;
-          height: 48px;
+          width: 48rpx;
+          height: 48rpx;
         }
 
         .item-text {
-          font-size: 14px;
-          margin-top: 8px;
+          font-size: 14rpx;
+          margin-top: 8rpx;
         }
       }
     }
@@ -245,7 +259,7 @@ const error = ref(null);
     background-color: #fff;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 10rpx 0;
 
     .nav-item {
       display: flex;
@@ -259,13 +273,13 @@ const error = ref(null);
       }
 
       .nav-icon {
-        width: 24px;
-        height: 24px;
+        width: 24rpx;
+        height: 24rpx;
       }
 
       .nav-text {
-        font-size: 12px;
-        margin-top: 4px;
+        font-size: 12rpx;
+        margin-top: 4rpx;
       }
     }
   }
