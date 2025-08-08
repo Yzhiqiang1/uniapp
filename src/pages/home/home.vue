@@ -22,15 +22,15 @@ function navigateTo(url: string) {
     <view class="navbar"></view>
     <!-- 设备概括 -->
     <view class="section">
-      <text class="section-title">设备概括</text>
+      <text class="section-title"> 设备概括 </text>
       <view class="section-content">
         <view class="item">
           <image src="/static/svgs/EnerRoughly.svg" class="icon"></image>
-          <text class="item-text">用能概括</text>
+          <text class="item-text"> 用能概括 </text>
         </view>
-        <view class="item">
+        <view class="item" @click="navigateTo('/pages/scanCode/scanCode')">
           <image src="/static/svgs/Scan.svg" class="icon"></image>
-          <text class="item-text">创建设备</text>
+          <text class="item-text"> 创建设备 </text>
         </view>
       </view>
     </view>
@@ -39,7 +39,7 @@ function navigateTo(url: string) {
     <view class="section">
       <text class="section-title">电力测试</text>
       <view class="section-content">
-        <view class="item" @click="navigateTo('/pages/login/login')">
+        <view class="item">
           <image src="/static/svgs/ElectricPowerDaily.svg" class="icon"></image>
           <text class="item-text">日原数据</text>
         </view>
