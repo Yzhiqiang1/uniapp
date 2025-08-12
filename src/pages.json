@@ -100,7 +100,7 @@
       "type": "page",
       "layout": "tabbar",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationStyle": "custom"
       }
     },
     {
@@ -108,7 +108,7 @@
       "type": "page",
       "layout": "default",
       "style": {
-        "navigationBarTitleText": "创建设备"
+        "navigationBarTitleText": "扫码创建设备"
       }
     },
     {

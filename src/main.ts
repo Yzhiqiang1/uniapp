@@ -7,6 +7,7 @@ import { routeInterceptor } from './router/interceptor'
 import store from './store'
 import '@/style/index.scss'
 import 'virtual:uno.css'
+import '@/utils/map' // 引入高德地图配置
 
 export function createApp() {
   const app = createSSRApp(App)

@@ -17,8 +17,8 @@ function navigateTo(url: string) {
 </script>
 
 <template>
+  <Navbar />
   <view class="home-container">
-    <Navbar />
     <!-- 设备概括 -->
     <view class="section">
       <text class="section-title"> 设备概括 </text>
@@ -186,21 +186,11 @@ function navigateTo(url: string) {
   </view>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped>  
 .home-container {
   position: relative;
   padding: 20rpx;
-  padding-top: 100rpx;
   background-color: #F2F2F2;
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 84rpx;
-    background-color: #fff;
-    z-index: 999;
-  }
   .section {
     margin-bottom: 20rpx;
     background-color: #fff;
