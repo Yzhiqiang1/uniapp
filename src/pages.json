@@ -15,7 +15,7 @@
     }
   },
   "tabBar": {
-    "custom": false,
+    "custom": true,
     "color": "#999999",
     "selectedColor": "#018d71",
     "backgroundColor": "#F8F8F8",
@@ -26,20 +26,20 @@
     "spacing": "3px",
     "list": [
       {
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/homeHL.png",
+        "iconPath": "static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/index_se.png",
         "pagePath": "pages/home/home",
         "text": "首页"
       },
       {
-        "iconPath": "static/tabbar/example.png",
-        "selectedIconPath": "static/tabbar/exampleHL.png",
-        "pagePath": "pages/about/about",
-        "text": "关于"
+        "iconPath": "static/tabbar/configuration.png",
+        "selectedIconPath": "static/tabbar/configuration_se.png",
+        "pagePath": "pages/cloud/cloud",
+        "text": "云组态"
       },
       {
-        "iconPath": "static/tabbar/example.png",
-        "selectedIconPath": "static/tabbar/exampleHL.png",
+        "iconPath": "static/tabbar/user.png",
+        "selectedIconPath": "static/tabbar/user_se.png",
         "pagePath": "pages/mien/mien",
         "text": "我的"
       }
@@ -49,16 +49,15 @@
     {
       "path": "pages/home/home",
       "type": "home",
-      "layout": "default",
+      "layout": "tabbar",
       "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "首页"
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/about/about",
       "type": "page",
-      "layout": "tabbar",
+      "layout": "default",
       "style": {
         "navigationBarTitleText": "关于"
       }
@@ -82,15 +81,15 @@
     {
       "path": "pages/cloud/cloud",
       "type": "page",
-      "layout": "default",
+      "layout": "tabbar",
       "style": {
-        "navigationBarTitleText": "云组态"
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/index/index",
       "type": "page",
-      "layout": "tabbar",
+      "layout": "default",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "解释"
@@ -99,9 +98,25 @@
     {
       "path": "pages/mien/mien",
       "type": "page",
-      "layout": "default",
+      "layout": "tabbar",
       "style": {
         "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/scanCode/scanCode",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "创建设备"
+      }
+    },
+    {
+      "path": "pages/survey/survey",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "设备概括"
       }
     }
   ],

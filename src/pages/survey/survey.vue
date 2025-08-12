@@ -1,8 +1,8 @@
 <route lang="jsonc" type="page">
 {
-  "layout": "tabbar",
+  "layout": "default",
   "style": {
-    "navigationStyle": "custom"
+    "navigationBarTitleText": "设备概括"
   }
 }
 </route>

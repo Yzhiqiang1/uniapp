@@ -1,6 +1,6 @@
 <route lang="jsonc" type="page">
 {
-  "layout": "tabbar",
+  "layout": "default",
   "style": {
     "navigationBarTitleText": "关于"
   }

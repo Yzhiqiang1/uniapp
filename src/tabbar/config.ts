@@ -1,12 +1,13 @@
 import type { TabBar } from '@uni-helper/vite-plugin-uni-pages'
 
-type NativeTabBarItem = TabBar['list'][0]
+type NativeTabBarItem = TabBar['list'][3]
 
 type CustomTabBarItem = Pick<NativeTabBarItem, 'text' | 'pagePath'> & {
   iconType: 'uniUi' | 'uiLib' | 'unocss' | 'iconfont' | 'image' // 不建议用 image 模式，需要配置2张图
   icon: any // 其实是 string 类型，这里是为了避免 ts 报错 (tabbar/index.vue 里面 uni-icons 那行)
   activeIcon?: string // 只有在 image 模式下才需要，传递的是高亮的图片（PS： 不建议用 image 模式）
   badge?: number | 'dot' // badge 显示一个数字或 小红点（样式可以直接在 tabbar/index.vue 里面修改）
+  iconActive?: string,
 }
 
 /**
@@ -26,7 +27,7 @@ export const TABBAR_MAP = {
 }
 
 // TODO: 1/3. 通过这里切换使用tabbar的策略
-export const selectedTabbarStrategy = TABBAR_MAP.NATIVE_TABBAR
+export const selectedTabbarStrategy = TABBAR_MAP.CUSTOM_TABBAR_WITH_CACHE
 
 // TODO: 2/3. 更新下面的 tabbar 配置
 // 如果是使用 NO_TABBAR(0)，nativeTabbarList 和 customTabbarList 都不生效(里面的配置不用管)
@@ -35,16 +36,22 @@ export const selectedTabbarStrategy = TABBAR_MAP.NATIVE_TABBAR
 // pagePath 是 nativeTabbarList 和 customTabbarList 的关联点，如果没有对应上，会有问题！！
 export const nativeTabbarList: NativeTabBarItem[] = [
   {
-    iconPath: 'static/tabbar/home.png',
-    selectedIconPath: 'static/tabbar/homeHL.png',
-    pagePath: 'pages/index/index',
+    iconPath: 'static/tabbar/index.png',
+    selectedIconPath: 'static/tabbar/index_se.png',
+    pagePath: 'pages/home/home',
     text: '首页',
   },
   {
-    iconPath: 'static/tabbar/example.png',
-    selectedIconPath: 'static/tabbar/exampleHL.png',
-    pagePath: 'pages/about/about',
-    text: '关于',
+    iconPath: 'static/tabbar/configuration.png',
+    selectedIconPath: 'static/tabbar/configuration_se.png',
+    pagePath: 'pages/cloud/cloud',
+    text: '云组态',
+  },
+  {
+    iconPath: 'static/tabbar/user.png',
+    selectedIconPath: 'static/tabbar/user_se.png',
+    pagePath: 'pages/mien/mien',
+    text: '我的',
   },
 ]
 
@@ -52,34 +59,42 @@ export const nativeTabbarList: NativeTabBarItem[] = [
 // 如果希望通过接口调用 customTabbarList，可以在 tabbar/index.vue 文件里面调用接口
 // 本文件因为需要提前编译生成 pages.json, 接口拦截还不生效，无法正常调用接口
 export const customTabbarList: CustomTabBarItem[] = [
+  // {
+  //   // text 和 pagePath 可以自己直接写，也可以通过索引从 nativeTabbarList 中获取
+  //   text: '首页',
+  //   pagePath: 'pages/home/home', // pagePath 是两者的关联点
+  //   // 本框架内置了 uniapp 官方UI库 （uni-ui)的图标库
+  //   // 使用方式如：<uni-icons type="home" size="30"/>
+  //   // 图标列表地址：https://uniapp.dcloud.net.cn/component/uniui/uni-icons.html
+  //   iconType: 'uniUi',
+  //   icon: 'home',
+  //   // badge: 'dot',
+  // },
   {
-    // text 和 pagePath 可以自己直接写，也可以通过索引从 nativeTabbarList 中获取
     text: '首页',
-    pagePath: 'pages/index/index', // pagePath 是两者的关联点
-    // 本框架内置了 uniapp 官方UI库 （uni-ui)的图标库
-    // 使用方式如：<uni-icons type="home" size="30"/>
-    // 图标列表地址：https://uniapp.dcloud.net.cn/component/uniui/uni-icons.html
-    iconType: 'uniUi',
-    icon: 'home',
-    // badge: 'dot',
+    pagePath: 'pages/home/home', // pagePath 是两者的关联点
+    iconType: 'image',
+    icon: '/static/tabbar/index.png',
+    iconActive: '/static/tabbar/index_se.png',
   },
   {
-    text: nativeTabbarList[1].text,
-    pagePath: nativeTabbarList[1].pagePath, // pagePath 是两者的关联点
+    text: '云组态',
+    pagePath: 'pages/cloud/cloud',
     // 注意 unocss 图标需要如下处理：（二选一）
     // 1）在fg-tabbar.vue页面上引入一下并注释掉（见tabbar/index.vue代码第2行）
     // 2）配置到 unocss.config.ts 的 safelist 中
-    iconType: 'unocss',
-    icon: 'i-carbon-code',
-    // badge: 10,
+    iconType: 'image',
+    icon: '/static/tabbar/configuration.png',
+    iconActive: '/static/tabbar/configuration_se.png',
   },
-  // {
-  //   pagePath: 'pages/mine/index',
-  //   text: '我的',
-  //   // 注意 iconfont 图标需要额外加上 'iconfont'，如下
-  //   iconType: 'iconfont',
-  //   icon: 'iconfont icon-my',
-  // },
+  {
+    pagePath: 'pages/mien/mien',
+    text: '我的',
+    // 注意 iconfont 图标需要额外加上 'iconfont'，如下
+    iconType: 'image',
+    icon: '/static/tabbar/user.png',
+    iconActive: '/static/tabbar/user_se.png',
+  },
   // {
   //   pagePath: 'pages/index/index',
   //   text: '首页',

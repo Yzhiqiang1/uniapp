@@ -1,6 +1,6 @@
 <route lang="jsonc" type="page">
 {
-  "layout": "default",
+  "layout": "tabbar",
   "style": {
     "navigationBarTitleText": "我的"
   }

@@ -1,9 +1,8 @@
 <route lang="jsonc" type="home">
 {
-  "layout": "default",
+  "layout": "tabbar",
   "style": {
-    "navigationStyle": "custom",
-    "navigationBarTitleText": "首页"
+    "navigationStyle": "custom"
   }
 }
 </route>
@@ -19,12 +18,12 @@ function navigateTo(url: string) {
 
 <template>
   <view class="home-container">
-    <view class="navbar"></view>
+    <Navbar />
     <!-- 设备概括 -->
     <view class="section">
       <text class="section-title"> 设备概括 </text>
       <view class="section-content">
-        <view class="item">
+        <view class="item" @click="navigateTo('/pages/survey/survey')">
           <image src="/static/svgs/EnerRoughly.svg" class="icon"></image>
           <text class="item-text"> 用能概括 </text>
         </view>
@@ -183,20 +182,7 @@ function navigateTo(url: string) {
     </view>
 
     <!-- 底部导航栏 -->
-    <view class="bottom-navigation">
-      <view class="nav-item active">
-        <image src="/static/svg/home-active.svg" class="nav-icon"></image>
-        <text class="nav-text">首页</text>
-      </view>
-      <view class="nav-item">
-        <image src="/static/svg/cloud-group-status.svg" class="nav-icon"></image>
-        <text class="nav-text">云组态</text>
-      </view>
-      <view class="nav-item">
-        <image src="/static/svg/my-profile.svg" class="nav-icon"></image>
-        <text class="nav-text">我的</text>
-      </view>
-    </view>
+    <tabbarList />
   </view>
 </template>
 
@@ -213,6 +199,7 @@ function navigateTo(url: string) {
     width: 100%;
     height: 84rpx;
     background-color: #fff;
+    z-index: 999;
   }
   .section {
     margin-bottom: 20rpx;
@@ -223,13 +210,13 @@ function navigateTo(url: string) {
     .section-title {
       font-size: 16rpx;
       font-weight: bold;
-      margin-bottom: 16rpx;
+      margin-bottom: 26rpx;
     }
 
     .section-content {
       display: flex;
       flex-wrap: wrap;
-
+      margin-top: 26rpx;
       .item {
         display: flex;
         flex-direction: column;

@@ -63,7 +63,7 @@ function getImageByIndex(index: number, item: { iconActive?: string, icon: strin
           :style="{ color: getColorByIndex(index) }"
           @click="handleClick(index)"
         >
-          <view class="relative px-3">
+          <view class="item-flex relative px-3">
             <template v-if="item.iconType === 'uniUi'">
               <uni-icons :type="item.icon" size="20" :color="getColorByIndex(index)" />
             </template>
@@ -111,5 +111,10 @@ function getImageByIndex(index: number, item: { iconActive?: string, icon: strin
 
   border-top: 1px solid #eee;
   box-sizing: border-box;
+  .item-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>
