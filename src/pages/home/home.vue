@@ -17,7 +17,7 @@ function navigateTo(url: string) {
 </script>
 
 <template>
-  <Navbar />
+  <Navbar :showDropdown="true"/>
   <view class="home-container">
     <!-- 设备概括 -->
     <view class="section">

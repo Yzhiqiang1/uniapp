@@ -79,6 +79,13 @@
       }
     },
     {
+      "path": "pages/BindAccount/BindAccount",
+      "type": "default",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/cloud/cloud",
       "type": "page",
       "layout": "tabbar",

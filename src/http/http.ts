@@ -1,9 +1,20 @@
 import type { CustomRequestOptions } from '@/http/interceptor'
+import { useUserStore } from '@/store'
+
+const userStore = useUserStore()
+
+const header = userStore.userInfo.token ? {
+  'Content-Type': 'application/json',
+  'authorization': 'Bearer ' + userStore.userInfo.token,
+  'tlinkAppId': userStore.userInfo.clientId,
+} : { 'Content-Type': 'application/json', }
+
 
 export function http<T>(options: CustomRequestOptions) {
   // 1. 返回 Promise 对象
   return new Promise<IResData<T>>((resolve, reject) => {
     uni.request({
+      header,
       ...options,
       dataType: 'json',
       // #ifndef MP-WEIXIN
@@ -33,13 +44,13 @@ export function http<T>(options: CustomRequestOptions) {
         }
       },
       // 响应失败
-      fail(err) {
-        uni.showToast({
-          icon: 'none',
-          title: '网络错误，换个网络试试',
-        })
-        reject(err)
-      },
+      // fail(err) {
+      //   uni.showToast({
+      //     icon: 'none',
+      //     title: '网络错误，换个网络试试',
+      //   })
+      //   reject(err)
+      // },
     })
   })
 }

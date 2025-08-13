@@ -9,13 +9,17 @@ import {
   getWxCode,
 } from '@/api/login'
 import { toast } from '@/utils/toast'
+import { srtToBase64 } from '@/utils/app'
 
 // 初始化状态
 const userInfoState: IUserInfoVo = {
-  id: 0,
-  username: '',
-  avatar: '/static/images/default-avatar.png',
+  id: 0,//用户ID
+  username: '',//用户名字
+  avatar: '/static/images/default-avatar.png',//用户头像
   token: '',
+  clientId: '',
+  secret: '',
+  amt: null,//账户余额
 }
 
 export const useUserStore = defineStore(
@@ -35,6 +39,7 @@ export const useUserStore = defineStore(
       }
       userInfo.value = val
     }
+
     const setUserAvatar = (avatar: string) => {
       userInfo.value.avatar = avatar
       console.log('设置用户头像', avatar)
@@ -57,6 +62,32 @@ export const useUserStore = defineStore(
       uni.setStorageSync('token', userInfo.token)
       // TODO 这里可以增加获取用户路由的方法 根据用户的角色动态生成路由
       return res
+    }
+
+    /**
+     *  获取accessToken
+     */
+    const getAccessToken = () => {
+      let authorization = srtToBase64(userInfo.value.clientId + ":" + userInfo.value.secret);
+      return new Promise((resolve, reject) => {
+          // fetch(api.token,{
+          //     method:'GET',
+          //     headers:{
+          //         'Content-Type': 'text/plain',
+          //         'authorization': 'Basic ' + authorization
+          //     }
+          // }).then(response => response.json()) //数据解析的方式，json解析
+          //     .then(response => {
+          //         if(response.access_token){
+          //             userInfo.value.token = response.access_token
+          //             resolve(true);
+          //         }else{
+          //             reject(response.error)
+          //         }
+          //     }).catch((error) => {
+          //         reject('网络错误');
+          //     })
+      })
     }
     /**
      * 用户登录

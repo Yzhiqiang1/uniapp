@@ -81,6 +81,13 @@ const closeDropdown = () => {
   isDropdownVisible.value = false
   emit('dropdownToggle', false)
 }
+
+// 跳转页面
+function navigateTo(url: string) {
+  uni.navigateTo({
+    url,
+  })
+}
 </script>
 
 <template>
@@ -106,24 +113,20 @@ const closeDropdown = () => {
   </view>
 
   <!-- 主页下拉设备树 -->
-  <view class="navbar-dropdown">
-    <!-- <template>
-      <view @click="">
-        <text>当前未登录点击登录</text>
-      </view>
-    </template> -->
-    <template>
+  <view v-if="props.showDropdown">
+    <view class="navbar-dropdown" :style="{ top: totalHeight + 'rpx', }" >
+      <text @click="navigateTo('/pages/BindAccount/BindAccount')">当前未登录点击登录</text>
+    </view>
+    <!-- <view class="navbar-dropdown">
       <text>用电表TP600/1609_140</text>
-      <!-- 右侧下拉按钮 -->
       <view v-if="showDropdown" class="navbar-right" @click="toggleDropdown">
-        <!-- 下拉图标 -->
         <uni-icons 
           :type="isDropdownVisible ? 'up' : 'down'"
           :color="'#000000'"
           size="26"
         />
       </view>
-    </template>
+    </view> -->
   </view>
   
   <!-- 设备树弹窗 -->

@@ -6,6 +6,9 @@ export interface IUserInfoVo {
   username: string
   avatar: string
   token: string
+  clientId: string
+  secret: string
+  amt: number
 }
 
 /**

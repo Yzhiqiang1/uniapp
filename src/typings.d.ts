@@ -2,6 +2,7 @@
 
 declare global {
   interface IResData<T> {
+    flag: string;
     code: number
     msg: string
     data: T
