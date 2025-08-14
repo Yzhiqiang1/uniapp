@@ -1,16 +1,14 @@
 import type { CustomRequestOptions } from '@/http/interceptor'
 import { useUserStore } from '@/store'
-
-const userStore = useUserStore()
-
-const header = userStore.userInfo.token ? {
-  'Content-Type': 'application/json',
-  'authorization': 'Bearer ' + userStore.userInfo.token,
-  'tlinkAppId': userStore.userInfo.clientId,
-} : { 'Content-Type': 'application/json', }
-
-
 export function http<T>(options: CustomRequestOptions) {
+  
+  const userStore = useUserStore()
+
+  const header = userStore.userInfo.token ? {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + userStore.userInfo.token,
+    'tlinkAppId': userStore.userInfo.clientId,
+  } : { 'Content-Type': 'application/json', }
   // 1. 返回 Promise 对象
   return new Promise<IResData<T>>((resolve, reject) => {
     uni.request({
