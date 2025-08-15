@@ -39,6 +39,7 @@ function handleGroupClick(group) {
     color="#ffffff"
   />
   <view class="cloud-page">
+    <EChartsComponent />
     <!-- 搜索框 -->
     <van-search v-model="searchKeyword" placeholder="关键字搜索" show-action>
       <template #action>
